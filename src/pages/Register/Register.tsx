@@ -1,6 +1,6 @@
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { SubmitHandler, useForm , type SubmitErrorHandler } from 'react-hook-form'
 import { Link } from 'react-router-dom'
-import rules from 'src/utils/rules'
+import getRules from 'src/utils/rules'
 interface IFormInput {
   email: string
   password: string
@@ -10,16 +10,20 @@ export default function Register() {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
+    getValues
   } = useForm<IFormInput>()
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
-  // console.log(errors)
+  const rules = getRules(getValues)
+  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log("submit pass valisate ",data)
+  const errorSubmit : SubmitErrorHandler<IFormInput> = (data)=>console.log("error",data);
+  
+
   return (
     <div className='bg-orange'>
       <div className='max-w-7xl mx-auto px-4'>
         <div className='grid grid-cols-1 lg:grid-cols-5 lg:py-32 py-12 lg:pr-10'>
           <div className='lg:col-span-2 lg:col-start-4'>
-            <form className='p-10 rounded bg-white shadow-sm' onSubmit={handleSubmit(onSubmit)} noValidate>
+            <form className='p-10 rounded bg-white shadow-sm' onSubmit={handleSubmit(onSubmit,errorSubmit)} noValidate>
               <div className='text-2xl'> Đăng Ký</div>
               <div className='mt-8'>
                 <input
@@ -45,9 +49,10 @@ export default function Register() {
               </div>
               <div className='mt-3'>
                 <input
-                  {...register('confirm_password', rules.confirm_password)}
+                  {...register('confirm_password', {...rules.confirm_password})}
                   type='password'
-                  name='confirm-password'
+                  name='confirm_password'
+                  autoComplete='on'
                   className='p-3 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm '
                   placeholder='Confirm Password'
                 />

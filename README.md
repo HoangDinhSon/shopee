@@ -31,4 +31,13 @@ export default {
 
 npm i eslint prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-ally eslint-plugin-react eslint-plugin-prettier
  ## 155
- validation for login 
+ validation for login
+ ## 156 
+ getValue when click submit 
+ log (data ) 
+ validate ò register 
+ - getvaluse o cònirm 
+ - di sosanh password 
+ - sau do re turn ve tru hoac false de963 handle submit xu li tiep 
+ - custome lai rule de lam sao truyen thang get value vao 
+
