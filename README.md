@@ -40,4 +40,10 @@ npm i eslint prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser
  - di sosanh password 
  - sau do re turn ve tru hoac false de963 handle submit xu li tiep 
  - custome lai rule de lam sao truyen thang get value vao 
+ ## 157 config container of tailwindcss
+ const plugin = require('taildwndcss/plugin')
+
+ core Plugin {
+  container : false ,
+ }
 
