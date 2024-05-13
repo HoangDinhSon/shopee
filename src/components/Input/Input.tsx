@@ -1,16 +1,16 @@
-import React from "react"
-import type { UseFormGetValues } from "react-hook-form"
-import { Rules } from "src/utils/rules"
+import React from 'react'
+import type { UseFormGetValues } from 'react-hook-form'
+import { Rules } from 'src/utils/rules'
 
 interface InputProps {
   name?: String
-  type?: React.HTMLInputTypeAttribute,
-  placeholder?: String,
+  type?: React.HTMLInputTypeAttribute
+  placeholder?: String
   register?: any
   autoComplete?: React.HTMLInputAutoCompleteAttribute
   // rules: Rules
 }
-export default function Input({ register, placeholder, type, autoComplete,  name }: InputProps) {
+export default function Input({ register, placeholder, type, autoComplete, name }: InputProps) {
   return (
     <>
       <input

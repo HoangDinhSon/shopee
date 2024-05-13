@@ -1,12 +1,14 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 
-interface IFormInput {
-  
-}
+interface IFormInput {}
 
 export default function Login() {
-  const { register, handleSubmit , formState:{errors}} = useForm<IFormInput>()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<IFormInput>()
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
   return (
     <div className='bg-orange'>

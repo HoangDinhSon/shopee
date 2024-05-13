@@ -1,6 +1,9 @@
 import type { RegisterOptions, UseFormGetValues } from 'react-hook-form'
 
 export type Rules = { [key in 'email' | 'password' | 'confirm_password']?: RegisterOptions }
+import { object, string, InferType, ref } from 'yup'
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getRules = (getValues?: UseFormGetValues<any>): Rules => ({
   email: {
     required: {
@@ -53,4 +56,23 @@ const getRules = (getValues?: UseFormGetValues<any>): Rules => ({
         : undefined
   }
 })
+
+export const registerForm = object({
+  email: string()
+    .required('email được yêu cầu')
+    .email('email không đúng định dạng ')
+    .max(160, 'Email phải nhỏ hơn 160 kí tự')
+    .min(5, 'Email phải lớn hơn 5 kí tự '),
+  password: string()
+    .required('Password được yêu cầu')
+    .max(160, 'Password phải nhỏ hơn 160 kí tự')
+    .min(5, 'Password phải lớn hơn 5 kí tự '),
+  confirm_password: string()
+    .required('Password được yêu cầu')
+    .max(160, 'Password phải nhỏ hơn 160 kí tự')
+    .min(5, 'Password phải lớn hơn 5 kí tự ')
+    .oneOf([ref('password'), ''], 'Passwords phải khớp')
+})
+export type RegisterForm = InferType<typeof registerForm>
+
 export default getRules

@@ -1,23 +1,22 @@
 import { SubmitHandler, useForm, type SubmitErrorHandler } from 'react-hook-form'
 import { Link } from 'react-router-dom'
-import getRules from 'src/utils/rules'
+import { registerForm } from 'src/utils/rules'
+import { yupResolver } from '@hookform/resolvers/yup'
 import Input from 'src/components/Input'
-interface IFormInput {
-  email: string
-  password: string
-  confirm_password: string
-}
+import type { RegisterForm } from 'src/utils/rules'
+
 export default function Register() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    getValues
-  } = useForm<IFormInput>()
-  const rules = getRules(getValues)
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log("submit pass valisate ", data)
-  const errorSubmit: SubmitErrorHandler<IFormInput> = (data) => console.log("error", data);
+    formState: { errors }
+  } = useForm<RegisterForm>({
+    resolver: yupResolver(registerForm)
+  })
+  // const rules = getRules(getValues)
 
+  const onSubmit: SubmitHandler<RegisterForm> = (data) => console.log('submit pass validate ', data)
+  const errorSubmit: SubmitErrorHandler<RegisterForm> = (data) => console.log('error', data)
 
   return (
     <div className='bg-orange'>
@@ -27,29 +26,16 @@ export default function Register() {
             <form className='p-10 rounded bg-white shadow-sm' onSubmit={handleSubmit(onSubmit, errorSubmit)} noValidate>
               <div className='text-2xl'> Đăng Ký</div>
               <div className='mt-8'>
-                <Input
-                  register={register('email', {
-                    ...rules.email
-                  })}
-
-                  type='email'
-                  name='email'
-                  placeholder='Email'
-                />
+                <Input register={register('email')} type='email' name='email' placeholder='Email' />
                 <div className='mt-1 text-red-600 text-sm .min-h-[1.1rem]'>{errors.email?.message}</div>
               </div>
               <div className='mt-3'>
-                <Input
-                 register=  {register('password', rules.password)}
-                  type='password'
-                  name='password'
-                  placeholder='Password'
-                />
+                <Input register={register('password')} type='password' name='password' placeholder='Password' />
                 <div className='mt-1 text-red-600 text-sm .min-h-[1rem]'>{errors.password?.message}</div>
               </div>
               <div className='mt-3'>
                 <Input
-                 register=  {register('confirm_password', { ...rules.confirm_password })}
+                  register={register('confirm_password')}
                   type='password'
                   name='confirm_password'
                   autoComplete='on'

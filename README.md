@@ -1,4 +1,5 @@
-# enviroment run with 
+# enviroment run with
+
 Node 18.2
 npm 10.5.0
 
@@ -17,7 +18,7 @@ If you are developing a production application, we recommend updating the config
 
 - Configure the top-level `parserOptions` property like this:
 
-```js
+```js {"id":"01HXPTWZFFHSKMR0CMR6KNA36P"}
 export default {
   // other rules...
   parserOptions: {
@@ -34,20 +35,29 @@ export default {
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 
 npm i eslint prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-ally eslint-plugin-react eslint-plugin-prettier
- ## 155
- validation for login
- ## 156 
- getValue when click submit 
- log (data ) 
- validate ò register 
- - getvaluse o cònirm 
- - di sosanh password 
- - sau do re turn ve tru hoac false de963 handle submit xu li tiep 
- - custome lai rule de lam sao truyen thang get value vao 
- ## 157 config container of tailwindcss
- const plugin = require('taildwndcss/plugin')
 
- core Plugin {
-  container : false ,
- }
+## 155
+
+validation for login
+
+## 156
+
+getValue when click submit
+log (data )
+validate ò register
+
+- getvaluse o cònirm
+- di sosanh password
+- sau do re turn ve tru hoac false de963 handle submit xu li tiep
+- custome lai rule de lam sao truyen thang get value vao
+
+## 157 config container of tailwindcss
+
+const plugin = require('taildwndcss/plugin')
+
+core Plugin {
+container : false ,
+}
+
+#159 validate register form use yup
 
